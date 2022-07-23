@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="grid.css">
+    <title>Grid</title>
+</head>
+<body>
+  <header>
+    <nav>
+      <a class="logo"> D20 Dice</a>
+
+      <ul class="nav-list">
+        <li><a href="index.html">Dado</a></li>
+      </ul>
+
+    </nav>
+  </header>
+
+  <div id="grid"></div>
+
+  <h2 id="azul">Aliados</h2>
+  <h2 id="vermelho">Inimigos</h2>
+  
+  <img src="inimigo.png"  class="inimigo"  height="30px"/>
+  <img src="inimigo.png"  class="inimigo"  height="30px"/>
+  <img src="inimigo.png"  class="inimigo"  height="30px"/>
+  <img src="inimigo.png"  class="inimigo"  height="30px"/>
+  <img src="inimigo.png"  class="inimigo"  height="30px"/>
+  <img src="inimigo.png"  class="inimigo"  height="30px"/>
+  <img src="inimigo.png"  class="inimigo"  height="30px"/>
+  <img src="inimigo.png"  class="inimigo"  height="30px"/>
+  <img src="inimigo.png"  class="inimigo"  height="30px"/>
+  <img src="inimigo.png"  class="inimigo"  height="30px"/>
+  <img src="inimigo.png"  class="inimigo"  height="30px"/>
+  <img src="inimigo.png"  class="inimigo"  height="30px"/>
+  <img src="inimigo.png"  class="inimigo"  height="30px"/>
+  <img src="inimigo.png"  class="inimigo"  height="30px"/>
+  <img src="inimigo.png"  class="inimigo"  height="30px"/>
+  <img src="inimigo.png"  class="inimigo"  height="30px"/>
+  <img src="inimigo.png"  class="inimigo"  height="30px"/>
+  <img src="inimigo.png"  class="inimigo"  height="30px"/>
+  <img src="inimigo.png"  class="inimigo"  height="30px"/>
+
+ <div id="aliados">
+  <img src="aliado.png"  class="aliado"  height="30px"/>
+  <img src="aliado.png"  class="aliado"  height="30px"/>
+  <img src="aliado.png"  class="aliado"  height="30px"/>
+  <img src="aliado.png"  class="aliado"  height="30px"/>
+  <img src="aliado.png"  class="aliado"  height="30px"/>
+  <img src="aliado.png"  class="aliado"  height="30px"/>
+  <img src="aliado.png"  class="aliado"  height="30px"/>
+  <img src="aliado.png"  class="aliado"  height="30px"/>
+  <img src="aliado.png"  class="aliado"  height="30px"/>
+  <img src="aliado.png"  class="aliado"  height="30px"/>
+  <img src="aliado.png"  class="aliado"  height="30px"/>
+  <img src="aliado.png"  class="aliado"  height="30px"/>
+  <img src="aliado.png"  class="aliado"  height="30px"/>
+  <img src="aliado.png"  class="aliado"  height="30px"/>
+  <img src="aliado.png"  class="aliado"  height="30px"/>
+  <img src="aliado.png"  class="aliado"  height="30px"/>
+  <img src="aliado.png"  class="aliado"  height="30px"/>
+  <img src="aliado.png"  class="aliado"  height="30px"/>
+  <img src="aliado.png"  class="aliado"  height="30px"/>
+  <img src="aliado.png"  class="aliado"  height="30px"/>
+ </div>
+<script>
+
+    var pecas = document.getElementsByClassName('aliado');
+    for(var indice=0; indice< pecas.length; indice++ ){
+      dragElement(pecas[indice]);
+    }
+    
+    var pecas = document.getElementsByClassName('inimigo');
+    for(var indice=0; indice< pecas.length; indice++ ){
+      dragElement(pecas[indice]);
+    }
+
+    function dragElement(elmnt) {
+      var pos1 = 0, pos2 = 0, pos3 = 0, pos4 = 0;
+      elmnt.onmousedown = dragMouseDown;
+     
+    
+      function dragMouseDown(e) {
+        e = e || window.event;
+        e.preventDefault();
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        document.onmouseup = closeDragElement;
+        document.onmousemove = elementDrag;
+      }
+    
+      function elementDrag(e) {
+        e = e || window.event;
+        e.preventDefault();
+        pos1 = pos3 - e.clientX;
+        pos2 = pos4 - e.clientY;
+        pos3 = e.clientX;
+        pos4 = e.clientY;
+        elmnt.style.top = (elmnt.offsetTop - pos2) + "px";
+        elmnt.style.left = (elmnt.offsetLeft - pos1) + "px";
+      }
+    
+      function closeDragElement() {
+        document.onmouseup = null;
+        document.onmousemove = null;
+      }
+    }
+
+
+</script>
+
+
+
+</body>
+
+</html>
